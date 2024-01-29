@@ -74,39 +74,65 @@ $(document).ready(function () {
     }
   }
   
-  // Your existing functionality
-  // $(".btn-forget").on("click", function (e) {
-  //   e.preventDefault();
-  //   var inputField = $(this).closest("form").find("input");
-  //   if (inputField.attr("required") && inputField.val()) {
-  //     $(".error-message").remove();
-  //     $(".form-items", ".form-content").addClass("hide-it");
-  //     $(".form-sent", ".form-content").addClass("show-it");
-  //   } else {
-  //     $(".error-message").remove();
-  //     $(
-  //       '<small class="error-message">Please fill the field.</small>'
-  //     ).insertAfter(inputField);
-  //   }
-  // });
+  $("form").submit(async function (event) {
+    event.preventDefault(); // Prevent the form from submitting normally
 
-  // $(".btn-tab-next").on("click", function (e) {
-  //   e.preventDefault();
-  //   $(".nav-tabs .nav-item > .active")
-  //     .parent()
-  //     .next("li")
-  //     .find("a")
-  //     .trigger("click");
-  // });
+    // Check if all fields are filled
+    if (await validateForm()) {
+      console.log("Form is valid, submitting...");
 
-  // $('.custom-file input[type="file"]').on("change", function () {
-  //   var filename = $(this).val().split("\\").pop();
-  //   $(this).next().text(filename);
-  // });
-});
+      // If validation is successful, submit the form using AJAX
+      $.ajax({
+        url: $(this).attr("action"),
+        type: $(this).attr("method"),
+        data: $(this).serialize(),
+        success: function (response) {
+          // Handle the success response as needed
+          console.log("Form submitted successfully:", response);
+          showSuccessMessage();
+        },
+        error: function (error) {
+          // Handle the error response as needed
+          console.error("Error submitting form:", error);
+          alert("Error submitting form. Please try again.");
+        },
+      });
+    } else {
+      console.log("Validation failed");
+      // If validation fails, you can choose to show an error message or take other actions
+      // For example, you can display an alert or customize the behavior
+      alert("Validation failed. Please check the form.");
+    }
+  });
 
-const today = new Date().toISOString().split('T')[0];
-document.getElementById('datePicker').min = today;
+  // Function to validate the form
+  async function validateForm() {
+    const form = $("form")[0];
+    const formElements = form.elements;
+
+    for (let i = 0; i < formElements.length - 1; i++) {
+      if (formElements[i].type !== "checkbox" && formElements[i].value === "") {
+        // Display an alert or customize the behavior for unfilled fields
+        alert("Please fill in all fields.");
+        return false;
+      }
+    }
+
+    // Check if the checkbox is checked
+    if (!formElements["checkbox"].checked) {
+      alert("Please agree to the terms and conditions.");
+      return false;
+    }
+
+    return true;
+  }
+
+  // Function to show success message
+  function showSuccessMessage() {
+    // Assuming you have a div with id "successMessage" in your HTML
+    $("#successMessage").html("Post added successfully!");
+  }
+
 // $(document).ready(function () {
 //   $("#submit").click(function (e) {
 //     e.preventDefault(); // Prevent the default form submission
@@ -153,4 +179,74 @@ document.getElementById('datePicker').min = today;
 //     }
 //   });
 // });
+$("form").submit(async function (event) {
+  event.preventDefault(); // Prevent the form from submitting normally
 
+  // Check if all fields are filled
+  if (await validateForm()) {
+    console.log("Form is valid, submitting...");
+
+    // If validation is successful, submit the form using AJAX
+    $.ajax({
+      url: $(this).attr("action"),
+      type: $(this).attr("method"),
+      data: $(this).serialize(),
+      success: function (response) {
+        // Handle the success response as needed
+        console.log("Form submitted successfully:", response);
+        showSuccessMessage("/base");
+      },
+      error: function (error) {
+        // Handle the error response as needed
+        console.error("Error submitting form:", error);
+        alert("Error submitting form. Please try again.");
+      },
+    });
+  } else {
+    console.log("Validation failed");
+    // If validation fails, you can choose to show an error message or take other actions
+    // For example, you can display an alert or customize the behavior
+    alert("Validation failed. Please check the form.");
+  }
+});
+
+// Function to validate the form
+async function validateForm() {
+  const form = $("form")[0];
+  const formElements = form.elements;
+
+  for (let i = 0; i < formElements.length - 1; i++) {
+    if (formElements[i].type !== "checkbox" && formElements[i].value === "") {
+      // Display an alert or customize the behavior for unfilled fields
+      alert("Please fill in all fields.");
+      return false;
+    }
+  }
+
+  // Check if the checkbox is checked
+  if (!formElements["checkbox"].checked) {
+    alert("Please agree to the terms and conditions.");
+    return false;
+  }
+
+  return true;
+}
+
+// Function to show success message
+function showSuccessMessage() {
+  Swal.fire({
+    title: "Post Added Successfully!",
+    icon: "success",
+    showConfirmButton: false,
+    timer: 1500,
+  }).then((result) => {
+    // Redirect to the specified URL after the Swal modal is closed
+    if (result.dismiss === Swal.DismissReason.timer) {
+      window.location.href = `/profile`;
+    }
+  });
+}
+});
+
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('datePicker').min = today;

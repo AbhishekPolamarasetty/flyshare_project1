@@ -8,18 +8,19 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background: url(../images/login.jpg);
-    background-size: cover;
+    background: url(https://img.freepik.com/free-vector/biophilic-design-workspace-abstract-concept-illustration-biophilic-room-eco-friendly-workspace-green-office-design-trend-bring-outdoors-indoors-vertical-garden_335657-114.jpg?size=626&ext=jpg&ga=GA1.1.1856809106.1705679310&semt=ais);
+    /* background-size: cover; */
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
+    background-position: right;
 }
 /* CSS styles for back button */
 .back-button {
     position: absolute;
     top: 20px;
     left: 20px;
-    font-size: 16px;
+    font-size: 20px;
+    color: #581ed6;
   }
   
   .back-link {
@@ -28,7 +29,12 @@ body{
   }
   
   .back-arrow {
-    margin-right: 5px;
+    margin-right: 1px;
+    color: #581ed6;
+  }
+  .back-button a {
+    /* margin-right: 5px; */
+    color: #581ed6;
   }
   
 .wrapper{
@@ -45,7 +51,7 @@ body{
     padding: 30px 40px;
 }
 .form-box{
-    position: relative;
+    /* position: relative; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,11 +63,17 @@ body{
 .login-container{
     /* border-radius: 10px; */
     position: absolute;
-    left: 4px;
+    left: 90px;
     width: 500px;
     display: flex;
     flex-direction: column;
     transition: .5s ease-in-out;
+    background-color: #581ed6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-right: auto;
+        /* border: 10px solid black; */
+    
 }
 .register-container{
     position: absolute;
@@ -84,10 +96,11 @@ body{
     margin-left: 5px;
 }
 header{
-    /* color: #fff; */
+    color: #fff;
     font-size: 30px;
     text-align: center;
     padding: 10px 0 30px 0;
+    /* color: white; */
 }
 .two-forms{
     display: flex;
