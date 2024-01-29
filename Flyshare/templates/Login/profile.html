@@ -155,9 +155,7 @@
 </head>
 <body>
    
-    <!-- <section id="content" class="profile-content">
-        <img id="profile-image" src="https://www.shutterstock.com/shutterstock/videos/1094802779/thumb/4.jpg?ip=x480" alt="Profile Image">
-    </section> -->
+
     <section id="sidebar">
         <!-- <a href="#" class="brand">
             <i class='bx bxs-smile'></i>
@@ -217,7 +215,7 @@
        
             <!-- NAVBAR -->
             <nav>
-                <i class='bx bx-menu' ></i>
+                <!-- <i class='bx bx-menu' ></i> -->
                 <div class="profile-text">
                     <b>Enhance your profile! Make your profile shine.</b>
                 </div>
@@ -226,7 +224,11 @@
                     <img src="{{ user.profile_picture }}">
                 </a>
             </nav>
+
         <main>
+            <!-- <section id="content1" class="profile-content1">
+                <img id="profile-image1" src="https://img.freepik.com/free-vector/sign-concept-illustration_114360-5425.jpg?size=626&ext=jpg&ga=GA1.1.701618016.1706502305&semt=ais" alt="Profile Image">
+            </section> -->
             <div id="form-container" class="container">
                 <div id="success-message" class="alert alert-success mt-3" style="display: none;">
                     Profile updated successfully!
@@ -243,7 +245,8 @@
                                             <img id="profile-picture" src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}https://th.bing.com/th/id/OIP.Ntwccxljc9Gmka_Y6InYMAHaHa?rs=1&pid=ImgDetMain{% endif %}" width="60" class="rounded">
                                             <div class="ml-3">
                                                 <!-- <label for="file-input" class="btn">Upload new picture</label> -->
-                                                <button type="button" for="file-input" id="remove-picture" class="btn">upload</button>
+                                                <input type="file" id="file-input" style="display: none;" />
+                                                <button type="button" id="remove-picture" class="btn" onclick="document.getElementById('file-input').click()">upload</button>
                                                 <input type="file" id="file-input" style="display: none;" name="profile_picture" accept="image/*" value="{{ user.profile_picture }}">
                                                 <button type="button" id="remove-picture" class="btn">Remove</button>
                                             </div>

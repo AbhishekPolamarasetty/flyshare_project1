@@ -165,8 +165,7 @@ def loginPage(request):
             return redirect('base')
         else:
             messages.error(request, "Incorrect credentials. Please try again.")
-            # Pass the error message to the template
-            return render(request, 'Login/login.html', {'error_message': messages.get_messages(request)})
+           
     return render(request,'Login/login.html')
 
 @login_required(login_url='login')

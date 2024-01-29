@@ -9,6 +9,8 @@ urlpatterns = [
     path('post1/',views.Post,name='post'),
     path('postAPI/',PostModelAPIView.as_view()),
     path('postAPI/<int:id>/',PostModelAPIViewID.as_view()),
+    path('terms/',views.termsPage,name='terms'),
+    path('submit_contact_form/', views.submit_contact_formPage, name='submit_contact_form'),
     # path('chat/messages/<int:user_id>/', views.user_chat_list, name='user_chat_list'),
     # path('chat/messages/<int:user_id>/<int:other_user_id>/', views.chat_messages, name='chat_messages'),
     # path('chats/', chat_view, name='chat_view'),

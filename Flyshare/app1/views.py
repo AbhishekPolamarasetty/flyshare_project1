@@ -459,3 +459,34 @@ def verifyPage(request):
     return render(request, 'Login/verify.html')
 def chat_view(request):
     return render(request, 'post/chat.html')
+
+def termsPage(request):
+    return render(request, 'Post/terms.html')
+
+from django.shortcuts import render
+from django.core.mail import send_mail
+from django.http import JsonResponse
+
+def submit_contact_formPage(request):
+    if request.method == 'POST':
+        # Get form data
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        query = request.POST.get('query')
+
+        # Send email
+        send_mail(
+            'New Contact Form Submission',
+            f'Name: {fname} {lname}\nEmail: {email}\nPhone: {phone}\nQuery: {query}',
+            'your_email@example.com',  # Replace with your email address
+            ['destination_email@example.com'],  # Replace with the destination email address
+            fail_silently=False,
+        )
+
+        # Return JSON response indicating success
+        return JsonResponse({'success': True, 'message': 'We received your help request. We will get back to you soon.'})
+
+    # Handle cases where the request method is not POST
+    return JsonResponse({'success': False, 'message': 'Invalid request method.'})

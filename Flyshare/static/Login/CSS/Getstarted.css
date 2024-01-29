@@ -12,6 +12,24 @@ header{
   padding: 28px 12%;
   transition: all .50s ease;
 }
+.row{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 100px;
+}
+.col p {
+  /* border: 3px solid black; */
+  margin-left: 350px;
+}
+.circle{
+  position: absolute;
+  top: 85px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #581ed6;
+  clip-path: circle(700px at right 800px);
+}
 .first{
   background-color: white;
 }
@@ -116,11 +134,14 @@ transition: all .50s ease;
 }
 
 .text-box {
-  width: 90%;
+  /* width: 30%; */
   /* color: #fff; */
   position: absolute;
-  top: 50%;
-  left: 50%;
+  /* top: 30%; */
+  margin-top: -40px;
+  margin-left: -100px;
+  /* color: #581ed6; */
+  /* left: 20%; */
   transform: translate(-50%, -50%);
   text-align: center;
   /* border: 3px solid black; */
@@ -132,6 +153,7 @@ transition: all .50s ease;
   font-weight: 600px;
   transition: 0.5s;
   margin-top: 20px;
+  color: #581ed6 !important;
   /* margin-left: -30px; */
 }
 
@@ -171,12 +193,13 @@ background-repeat: no-repeat;
 }
 
 .wrapper {
+  /* border: 3px solid black; */
 display: flex;
 justify-content: center;
 align-items: center;
 min-height: 110vh;
-background-image: url(../images/getstartedflight.png);
-background-size: cover;
+/* background-image: url(https://img.freepik.com/free-photo/attractive-woman-holding-phone-tickets_496169-831.jpg?w=900&t=st=1706461596~exp=1706462196~hmac=2cdc284a2c85b92d2d098f81f1df791e25bbd61d8c0dd2c9e7aa682f412892b9); */
+/* background-size: cover; */
 background-repeat: no-repeat;
 /* background-attachment: fixed; */
 
@@ -187,7 +210,15 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027);  */
 
 
 }
-
+.wrapper123{
+  /* border: 3px solid black; */
+  /* width: 50%; */
+  /* width: 100px; */
+  margin-left: 540px;
+}
+.wrapper123 img{
+  width: 800px;
+}
 @media only screen and (max-width: 540px) {
 .wrapper {
   min-height: 100vh;

@@ -23,15 +23,14 @@
     <div class="wrapper">
       <div class="form-box">
         <div class="login-container" id="login">
+          {% csrf_token %}
           {% if messages %}
-          <ul class="messages">
-              {% for message in messages %}
-                  {% if message.tags == 'success' %}
+              <ul class="messages">
+                  {% for message in messages %}
                       <li class="{{ message.tags }}">{{ message|safe }}</li>
-                  {% endif %}
-              {% endfor %}
-          </ul>
-      {% endif %}
+                  {% endfor %}
+              </ul>
+          {% endif %}
       
 
           <form method="POST">
@@ -82,8 +81,8 @@
               <div class="bottom">
                 <span
                   >Don't have an account?
-                  <a href="{% url 'register' %}" style="color: black"
-                    >Sign Up</a
+                  <a href="{% url 'register' %}" style="color: #FFA500"
+                    ><b>Sign Up</b></a
                   ></span
                 >
               </div>

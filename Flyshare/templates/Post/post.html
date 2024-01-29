@@ -13,7 +13,7 @@
   <body>
     <div class="form-body on-top-mobile">
       <div class="website-logo">
-        <a href="{% url 'index' %}">
+        <a href="{% url 'get-post' %}">
           <div class="logo">
           <span><b>FlyShare</b></span>   <!-- ✈️  -->
           </div>
@@ -115,7 +115,6 @@
                       name="FlightNumber"
                       pattern="[A-Za-z0-9-]{6}"
                       title="Flight number should be exactly 6 characters with letters and numbers"
-                      required
                     />
                   </div>
                   <div class="col-12 col-sm-6">
@@ -126,7 +125,7 @@
                       name="PNRNumber"
                       pattern="[A-Za-z0-9-]{6}"
                       title="PNR number should be exactly 6 characters with letters and numbers"
-                      required
+
                     />
                   </div>
                 </div>
@@ -171,7 +170,7 @@
                   <div class="col-12 col-sm-6">
                     <input type="checkbox" id="chk1" name="checkbox" required />
                     <label for="chk1" class="check">
-                        I agree on <a href="#">terms & conditions</a>
+                        I agree on <a href="{% url 'terms' %}">terms & conditions</a>
                     </label>
                   </div>
                   <div class="col-12 col-sm-6">

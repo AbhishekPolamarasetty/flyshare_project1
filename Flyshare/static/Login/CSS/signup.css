@@ -8,29 +8,33 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background: url(../images/login.jpg);
-    background-size: cover;
+    background: url(https://img.freepik.com/free-vector/lo-fi-concept-illustration_114360-8829.jpg?size=626&ext=jpg&ga=GA1.1.1856809106.1705679310&semt=ais);
+    /* background-size: cover; */
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
+    background-position: right center;
+   
 }
 /* CSS styles for back button */
 .back-button {
     position: absolute;
     top: 20px;
     left: 20px;
-    font-size: 16px;
+    font-size: 20px;
   }
   
   .back-link {
     text-decoration: none;
-    color: #000; /* Change color as needed */
+    /* color: #000; Change color as needed */
   }
   
   .back-arrow {
     margin-right: 5px;
+    color:#581ed6;
   }
-  
+  .back-button a{
+    color: #581ed6;
+  }
 .wrapper{
     /* width: 420px; */
     /* border: 2px solid rgba(255, 255, 255, .2); */
@@ -56,12 +60,24 @@ body{
 }
 
 .register-container{
-    /* position: absolute; */
-    right: 4px;
-    width: 500px;
+    /* position: relative; */
+    /* right: 100px; */
+    /* width: 500px;
     display: flex;
     flex-direction: column;
     transition: .5s ease-in-out;
+    border: 10px solid black; */
+   
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        transition: .5s ease-in-out;
+        margin-right: auto;  /* Move the container to the total right */
+        background-color: #581ed6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-left: 80px;
+    
 }
 .top span{
     /* color: #fff; */
@@ -76,10 +92,11 @@ body{
     margin-left: 5px;
 }
 header{
-    /* color: #fff; */
+    color: #fff;
     font-size: 30px;
     text-align: center;
     padding: 10px 0 30px 0;
+    
 }
 .two-forms{
     display: flex;
