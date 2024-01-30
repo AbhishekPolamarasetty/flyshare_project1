@@ -164,5 +164,5 @@ EMAIL_HOST_PASSWORD = 'mqoaargctoidqssj'
 #     # other authentication backends if needed
 # ]
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Replace with the origin of your React app
+    "*",  # Replace with the origin of your React app
 ]
