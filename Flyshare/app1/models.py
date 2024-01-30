@@ -43,6 +43,7 @@ class Message(models.Model):
     value = models.CharField(max_length=1000000)
     date = models.DateTimeField(default=datetime.now, blank=True)
     user = models.CharField(max_length=1000000)
+    image = models.ImageField(upload_to='message_images/', blank=True, null=True)
     room = models.CharField(max_length=1000000)
 
 

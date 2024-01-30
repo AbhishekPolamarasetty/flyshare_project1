@@ -65,13 +65,10 @@ border: #8c66dd;
 border: #581ed6;
 }
 .verify:hover{
-  background-color: #8c66dd;
+  background-color: #8c66dd !important;
 border: #8c66dd;
 }
-.custom-color:hover {
-background-color: #8c66dd;
-border: #8c66dd;
-}
+
 /* .top{
   width: 100%;
 

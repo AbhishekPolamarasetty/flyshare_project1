@@ -367,14 +367,31 @@ def checkview(request):
     new_room.save()
     return redirect('/app1/'+room+'/?username='+username)
 
-def send(request):
-    message = request.POST['message']
-    username = request.POST['username']
-    room_id = request.POST['room_id']
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
-    new_message = Message.objects.create(value=message, user=username, room=room_id)
-    new_message.save()
-    return HttpResponse('Message sent successfully')
+@method_decorator(csrf_exempt, name='dispatch')
+def send(request):
+    if request.method == 'POST':
+        username = request.POST.get('username', '')
+        room_id = request.POST.get('room_id', '')
+        message = request.POST.get('message', '')
+        image = request.FILES.get('image', None)
+
+        if not (username and room_id and (message or image)):
+            return JsonResponse({'error': 'Invalid parameters'})
+
+        if image:
+            # Handle image upload
+            new_message = Message.objects.create(user=username, room=room_id, image=image)
+        else:
+            # Handle text message
+            new_message = Message.objects.create(user=username, room=room_id, value=message)
+
+        new_message.save()
+        return JsonResponse({'status': 'Message sent successfully'})
+
+    return JsonResponse({'error': 'Invalid request method'})
 
 def getMessages(request, room):
     room_details = Room.objects.get(name=room)
