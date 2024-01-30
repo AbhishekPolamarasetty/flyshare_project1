@@ -15,16 +15,17 @@ pipeline {
   
         stage('push'){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'd0f79194-d3e8-4767-aee4-9d1d8288ab80', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: 'f5e5b886-4d15-482f-bb92-8dc7d946854d', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USERNAME')]) {
+    // some block
                    sh 'echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin'
                    sh 'docker push abhishekpola/flyshare'
+         
                 }
             }
         }
         stage('deploy') {
             steps {
-                sh 'docker stop demo-container'
-                sh 'docker rm demo-container'
+                
                 sh 'docker run -d -p 5000:5000 --name demo-container abhishekpola/flyshare'
             }
         }
