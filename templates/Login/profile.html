@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'Login/CSS/profile.css' %}">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
    
     <title>Profile</title>
@@ -287,10 +288,10 @@
            
            
             <div id="my-posts-container" class="post-container">
-                <ul class="side-menu">
+                <div class="post-flex-container">
                     {% for post in user_posts %}
-                        <li class="post-item">
-                            <div class="post-container">
+                    <div class="post-item">
+                            <div class="post1-container">
                                 <!-- <div class="post-header">
                                     <strong>Passenger Name:</strong> {{ post.passenger_name }}<br>
                                     <div class="post-menu" onclick="toggleOptionsMenu('{{ post.id }}')">&#8226;&#8226;&#8226;</div>
@@ -306,12 +307,11 @@
                             </div>
                             <div id="options-menu-{{ post.id }}" class="options-menu">
                                 <ul>
-                                    <a href="#" onclick="confirmDelete('{{ post.id }}')">Delete</a>
-                                </ul>
+                                    <button type="button" class="btn btn-danger"  onclick="confirmDelete('{{ post.id }}')">Delete  </button>                        </ul>
                             </div>
-                        </li>
+                        </div>
                     {% endfor %}
-                </ul>
+                    </div>
             </div>
             <ul id="chat-rooms-container" class="submenu">
                 {% for post in user_posts %}
