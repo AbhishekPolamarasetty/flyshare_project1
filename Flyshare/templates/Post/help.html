@@ -28,12 +28,13 @@
   <body>
     <!-- current user = {{ user.id }} -->
     <div class="post-container">
+      <div class="back-button">
+        <a href="{% url 'get-post' %}"class="back-link">
+          <span class="back-arrow">&lt;</span>Back
+        </a>
+      </div>
       <div class="header">
-        <div class="back-button">
-          <a href="{% url 'get-post' %}"class="back-link">
-            <span class="back-arrow">&lt;</span>Back
-          </a>
-        </div>
+       
         <div class="col-12 col-sm-2" id="form-control">
           <input
             type="text"
